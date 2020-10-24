@@ -7,6 +7,7 @@ const app = express();
 const fetch = require('node-fetch');
 const bodyParer = require('body-parser');
 
+const auth = require('./auth/index');
 const apiHeartBeat = require('./router/apiHeartbeat');
 const booksRouter = require('./router/apiBooks');
 const routerMain = require('./router/main');
@@ -20,6 +21,7 @@ app.use(bodyParer.json());
 app.use('/', routerMain);
 app.use('/router/apiHeartBeat', apiHeartBeat);
 app.use('/router/apiBooks', booksRouter);
+app.use('/auth/github', auth);
 
 app.listen(3001, () => {
   console.log('Hello humans, server is running');
